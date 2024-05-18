@@ -10,14 +10,4 @@ export default class Home {
 
     expect(this.page.getByRole('link', { name: 'Парфумерія' })).toBeVisible()
   }
-
-  async gotoProducts() {
-    await this.page.getByRole('link', { name: 'Тіло і ванна' }).hover()
-
-    const productsLink = this.page.getByRole('link', { name: 'Косметика для тіла' })
-
-    await expect(productsLink).toBeVisible()
-
-    await productsLink.click()
-  }
 }

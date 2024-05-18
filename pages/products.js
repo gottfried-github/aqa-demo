@@ -104,6 +104,26 @@ export default class Products {
       .first()
   }
 
+  async locateProduct() {
+    const productFirst = this.page
+      .locator('.catalog-products .simple-slider-list__link', {
+        hasNotText: /^Спонсоровано$/i,
+      })
+      .first()
+
+    return {
+      container: productFirst,
+      title: await productFirst.locator('.simple-slider-list__name').innerText(),
+      price: parseInt(
+        await productFirst
+          .locator('.simple-slider-list__price_container .simple-slider-list__price .price_item')
+          .innerText(),
+        10
+      ),
+      btnBuy: productFirst.locator('.simple-slider-list__other-info .button.buy'),
+    }
+  }
+
   locateSpinner() {
     return this.page.locator('.catalog-products > .loading-block')
   }
