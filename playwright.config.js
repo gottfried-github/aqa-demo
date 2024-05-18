@@ -1,5 +1,5 @@
 // @ts-check
-const { defineConfig, devices } = require('@playwright/test');
+const { defineConfig, devices } = require('@playwright/test')
 
 /**
  * Read environment variables from file.
@@ -30,6 +30,8 @@ module.exports = defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
+
+  // timeout: 2 * 60 * 1000,
 
   /* Configure projects for major browsers */
   projects: [
@@ -75,5 +77,4 @@ module.exports = defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-});
-
+})
