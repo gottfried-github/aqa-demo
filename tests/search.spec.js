@@ -21,7 +21,7 @@ test('search works correctly', async ({ page }) => {
 
   const products = await pageSearch.locateProductsByTitle(PRODUCT_TITLE)
 
-  // check that at least one product matches the search (see #search)
+  // check that at least one product matches the search (see https://github.com/gottfried-github/aqa-demo/tree/master?tab=readme-ov-file#search)
   let atLeastOneMatches = false
 
   for (const product of products) {

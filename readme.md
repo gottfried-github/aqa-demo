@@ -1,5 +1,5 @@
 # Install Playwright
-I use `playwright` in this project. If your system isn't supported by it, you can install it inside a Docker container. See [Using Docker](#using-docker).
+I use [Playwright](https://playwright.dev/) in this project. If your system isn't supported by it, you can install it inside a Docker container. See [Using Docker](#using-docker).
 
 Now, first of all, clone the repo.
 
@@ -18,9 +18,11 @@ npx playwright install-deps
 
 ### Run the tests
 1. run the container
+
 `docker run -it -v .:/app gottfried-aqa-test bash`
 
 2. inside the running container
+
 `cd /app && npx playwright test`
 
 # Run
@@ -39,7 +41,7 @@ allure open allure-report/
 
 # Tests comments
 ## Cart
-The test sometimes fails at line `31` or line `47` with no cart popping up. 
+The test sometimes fails at line [27](https://github.com/gottfried-github/aqa-demo/blob/master/tests/cart.spec.js#L27) or line [43](https://github.com/gottfried-github/aqa-demo/blob/master/tests/cart.spec.js#L43) with no cart popping up. 
 
 I haven't observed such behavior while testing manually. 
 
