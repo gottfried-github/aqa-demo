@@ -1,13 +1,5 @@
 import { expect } from '@playwright/test'
 
-const waitFor = timeout => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve()
-    }, timeout)
-  })
-}
-
 export default class Products {
   constructor(page) {
     this.page = page
@@ -83,8 +75,6 @@ export default class Products {
   }
 
   async locateVisibleSortOrderDesc() {
-    // await this.page.screenshot({ path: 'locateVisibleSortOrderDesc_sortMenuTitle.png' })
-
     await this.page.getByText('Впорядкувати за').click()
 
     const sortOrderDesc = this.page.locator('.catalog-sort-list__item label', {

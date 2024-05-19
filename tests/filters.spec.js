@@ -28,7 +28,6 @@ test('price filter works correctly', async ({ page }) => {
   // label set value to the input
   await sortOrderAsc.label.click()
   // menu updates data and hides on change
-  // await sortOrderAsc.input.dispatchEvent('input')
   await sortOrderAsc.input.dispatchEvent('change')
 
   // wait until product reload
@@ -39,13 +38,9 @@ test('price filter works correctly', async ({ page }) => {
   const priceFirstAsc = await products.locateFirstProductPrice().innerText()
   expect(parseInt(priceFirstAsc, 10)).toBeGreaterThanOrEqual(2000)
 
-  // console.log('priceFirstAsc:', priceFirstAsc)
-  // await page.screenshot({ path: 'priceFirstAsc-checked.png' })
-
   /* sort products in descending order */
   const sortOrderDesc = await products.locateVisibleSortOrderDesc()
   await sortOrderDesc.label.click()
-  // await sortOrderDesc.input.dispatchEvent('input')
   await sortOrderDesc.input.dispatchEvent('change')
 
   // wait until product reload
@@ -55,7 +50,4 @@ test('price filter works correctly', async ({ page }) => {
   // check upper bound
   const priceFirstDesc = await products.locateFirstProductPrice().innerText()
   expect(parseInt(priceFirstDesc, 10)).toBeLessThanOrEqual(5000)
-
-  // console.log('priceFirstDesc:', priceFirstDesc)
-  // await page.screenshot({ path: 'priceFirstDesc-checked.png' })
 })
