@@ -1,25 +1,21 @@
 import { test, expect } from '@playwright/test'
 
 import Nav from '../pages/nav'
+import Home from '../pages/home'
 import Products from '../pages/products'
 import Product from '../pages/product'
 import Cart from '../pages/cart'
 
-const waitFor = timeout => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve()
-    }, timeout)
-  })
-}
-
 test('cart works properly', async ({ page }) => {
   const pageNav = new Nav(page)
+  const pageHome = new Home(page)
   const pageProducts = new Products(page)
   const pageProduct = new Product(page)
   const pageCart = new Cart(page)
 
-  await pageProducts.goto()
+  await pageHome.goto()
+  await pageNav.gotoCategoryOne()
+  await pageProducts.isVisible()
 
   /* pick a product, go to product page and add it to cart */
   const productOne = await pageProducts.locateProduct()

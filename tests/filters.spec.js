@@ -1,10 +1,16 @@
 import { test, expect } from '@playwright/test'
+import Nav from '../pages/nav'
+import Home from '../pages/home'
 import Products from '../pages/products'
 
 test('price filter works correctly', async ({ page }) => {
+  const nav = new Nav(page)
+  const home = new Home(page)
   const products = new Products(page)
 
-  await products.goto()
+  await home.goto()
+  await nav.gotoCategoryOne()
+  await products.isVisible()
 
   const purposeFilter = await products.locateVisiblePurposeFilter()
   const priceInputFrom = await products.locateVisiblePriceInputFrom()

@@ -1,10 +1,16 @@
 import { test, expect } from '@playwright/test'
+import Nav from '../pages/nav'
+import Home from '../pages/home'
 import Products from '../pages/products'
 
 test('price filter forbids inverse range', async ({ page }) => {
+  const nav = new Nav(page)
+  const home = new Home(page)
   const products = new Products(page)
 
-  await products.goto()
+  await home.goto()
+  await nav.gotoCategoryOne()
+  await products.isVisible()
 
   const priceInputFrom = await products.locateVisiblePriceInputFrom()
   const priceInputTo = await products.locateVisiblePriceInputTo()

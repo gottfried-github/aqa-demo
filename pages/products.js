@@ -21,7 +21,9 @@ export default class Products {
   }
 
   async isVisible() {
-    await expect(this.page.getByRole('heading', { name: 'Косметика для тіла' })).toBeVisible()
+    const loc = this.page.locator('.catalog-products')
+
+    await expect(loc).toBeVisible()
   }
 
   async locateVisiblePriceInputFrom() {
