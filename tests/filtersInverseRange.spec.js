@@ -22,10 +22,6 @@ test('price filter forbids inverse range', async ({ page }) => {
 
   await products.locatePriceFilterTag(3000, 200).waitFor({ state: 'visible' })
 
-  expect(products.locatePriceFilterTag(3000, 200)).not.toBeVisible()
-
   await page.locator('.catalog-content').scrollIntoViewIfNeeded()
-  await allure.attachment('inverse-range-failed', await page.screenshot(), {
-    contentType: 'image/png',
-  })
+  await expect(products.locatePriceFilterTag(3000, 200)).not.toBeVisible()
 })
